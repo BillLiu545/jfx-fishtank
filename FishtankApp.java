@@ -104,6 +104,15 @@ public class FishtankApp extends Application
         // File menu
         Menu fileMenu = new Menu("File");
         topMenu.getMenus().add(fileMenu);
+
+        // Menu item - Reset
+        MenuItem resetItem = new MenuItem("Reset");
+        resetItem.setOnAction((e->
+        {
+            tank.clear();
+            fishList.clear();
+            table.refresh();
+        }));
         
         // Menu item - Quit
         MenuItem quitItem = new MenuItem("Quit");
@@ -112,6 +121,9 @@ public class FishtankApp extends Application
             mainStage.close();
             System.exit(0);
         }));
+
+        // Add all items to menu
+        fileMenu.getItems().addAll(resetItem, quitItem);
         
         // Show once all elements are added in
         mainStage.show();
